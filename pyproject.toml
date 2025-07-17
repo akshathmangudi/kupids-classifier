@@ -4,6 +4,10 @@ version = "0.1.0"
 description = "Sentiment analysis of Tinder app reviews from Google Play Store."
 authors = ["Your Name <your.email@example.com>"]
 requires-python = ">=3.8"
+dependencies = [
+    "google-play-scraper",
+    "pandas"
+]
 
 [tool.uv]
 # uv-specific settings can be added here if needed 

@@ -1,0 +1,62 @@
+openapi: 3.0.0
+info:
+  title: Kupids Classifier API
+  version: 1.0.0
+servers:
+  - url: http://localhost:8000
+paths:
+  /analyze:
+    post:
+      summary: Run sentiment analysis pipeline for a Google Play app or CSV
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                app_id:
+                  type: string
+                  description: Google Play app ID (e.g., com.tinder)
+                csv_path:
+                  type: string
+                  description: Path to a CSV file of reviews (optional)
+      responses:
+        '200':
+          description: Analysis results
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  eda:
+                    type: object
+                    properties:
+                      sentiment_distribution_plot:
+                        type: string
+                        description: Path to sentiment distribution plot image
+                      wordcloud_plot:
+                        type: string
+                        description: Path to word cloud plot image
+                      summary_stats:
+                        type: object
+                        description: Summary statistics
+                  model_comparison:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        Model:
+                          type: string
+                        Accuracy:
+                          type: number
+                        F1:
+                          type: number
+                  best_model:
+                    type: string
+                  gemini_explanation:
+                    type: string
+        '400':
+          description: Invalid input or scraping error
+        '404':
+          description: No reviews found for the given app ID 

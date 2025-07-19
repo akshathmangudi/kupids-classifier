@@ -114,3 +114,15 @@ kupids-classifier/
 - Use the scripts in `src/` for scraping or additional data processing.
 
 ---
+
+# Model Performance Summary
+
+| Model                | Accuracy  | F1      |
+|----------------------|-----------|---------|
+| VADER                | 0.754417  | 0.763008|
+| Logistic Regression  | 0.871583  | 0.869771|
+| DeBERTa-v3-small     | 0.881917  | 0.882514|
+
+**Conclusion:**
+
+The DeBERTa-v3-small model achieved the highest accuracy and F1 score, making it the best performing model for sentiment analysis on Google Play app reviews in this project.
